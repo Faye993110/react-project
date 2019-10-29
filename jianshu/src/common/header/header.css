@@ -1,0 +1,23 @@
+.headerWrapper{
+    height: 58px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.logo{
+   position: absolute;
+   height: 56px;
+   top:0;
+   left:0;
+   width: 100px;
+   display: block;
+   background: url('../../statics/logo.png');
+   background-size:contain
+}
+
+.nav{
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    background: green
+}
