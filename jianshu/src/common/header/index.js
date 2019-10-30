@@ -10,7 +10,7 @@ function Header() {
             <div className='navItem left active'>首页</div>
             <div className='navItem left'>下载APP</div>
             <div className='navItem right'>登陆</div>
-            <div className='navItem right'><i className='iconfont'></i></div>
+            <div className='navItem right'><i className='iconfont'>&#xe636;</i></div>
             <input className = 'navSearch' placeholder="搜索"></input>
         </div>
         <div className='addition'>
