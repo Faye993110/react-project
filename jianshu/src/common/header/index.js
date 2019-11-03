@@ -1,16 +1,11 @@
-import React,{ useState } from 'react';
+import React from 'react';
 import './header.css';
 import '../../statics/confont/iconfont.css'
 import { CSSTransition } from 'react-transition-group'
+import {connect} from 'react-redux'
 
-function Header() {
-    const [focused, setFocused] = useState(false);
-    function handleInputFocuse(){
-        setFocused(true);
-    }
-    const handleInputBlue= ()=> {
-        setFocused(false);
-    }
+const Header = (props) => {
+   
   return (
     <div className='headerWrapper'>
         <a className='logo' href='/'></a>
@@ -21,13 +16,13 @@ function Header() {
             <div className='navItem right'><i className='iconfont'>&#xe636;</i></div>
             <CSSTransition
                 timeout={100}
-                in={focused}
+                in={props.focused}
                 classNames="slide">
             <div className='searchWrapper'>
-                <input onFocus = {handleInputFocuse} 
-                       onBlur = {handleInputBlue}
-                       className = {focused ? 'focused navSearch' : 'navSearch'}  placeholder="搜索"></input>
-                <i className = {focused ? 'focused iconfont' : 'iconfont' }>&#xe62a;</i>
+                <input onFocus = {props.handleInputFocuse} 
+                       onBlur = {props.handleInputBlur}
+                       className = {props.focused ? 'focused navSearch' : 'navSearch'}  placeholder="搜索"></input>
+                <i className = {props.focused ? 'focused iconfont' : 'iconfont' }>&#xe62a;</i>
             </div>
             </CSSTransition>
         </div>
@@ -38,5 +33,21 @@ function Header() {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return{
+    focused: state.focused
+  }
+}
 
-export default Header;
+const mapDispatchToProps = (dispatch) => {
+    return{
+        handleInputBlur(){
+            dispatch({type: 'search_blur'})
+        },
+        handleInputFocuse(){
+           dispatch({type: 'search_focus'})
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
