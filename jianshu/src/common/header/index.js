@@ -1,8 +1,9 @@
 import React from 'react';
 import './header.css';
-import '../../statics/confont/iconfont.css'
-import { CSSTransition } from 'react-transition-group'
-import {connect} from 'react-redux'
+import '../../statics/confont/iconfont.css';
+import { CSSTransition } from 'react-transition-group';
+import {connect} from 'react-redux';
+import {actionCreators} from './store'
 
 const Header = (props) => {
    
@@ -42,10 +43,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
         handleInputBlur(){
-            dispatch({type: 'search_blur'})
+            dispatch(actionCreators.searchBlur())
         },
         handleInputFocuse(){
-           dispatch({type: 'search_focus'})
+           dispatch(actionCreators.searchFocus())
         }
     }
 }
