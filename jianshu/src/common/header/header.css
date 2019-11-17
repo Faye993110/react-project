@@ -79,6 +79,7 @@
 
 
 
+
 .searchWrapper .iconfont{
 	position:absolute;
 	right:3px;
@@ -119,4 +120,43 @@ input::placeholder {
 .writting{
 	color: #fff;
 	background-color: #ec6149;
+}
+
+.SearchInfo{
+	position: absolute;
+	left: 0;
+	top: 56px;
+	width: 240px;
+	padding: 0 20px;
+	box-shadow: 0 0 8px rgba(0,0,0,.2)
+}
+
+.SearchInfoTitle{
+	margin-top:20px;
+	margin-bottom: 15px;
+	line-height: 20px;
+	font-size:14px;
+	color:#969696
+}
+
+.SearchInfoSwitch{
+	float: right;
+	font-size:13px;
+}
+
+.SearchInfoItem a{
+	font-size:12px;
+	padding:0 5px;
+	border:1px solid #ddd;
+	line-height: 20px;
+	color: #787878;
+	float: left;
+	display: block;
+	border-radius: 3px;
+	margin-right: 10px;
+	margin-bottom: 15px;
+}
+
+.SearchInfoItem{
+	overflow: hidden;
 }

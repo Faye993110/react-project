@@ -5,6 +5,32 @@ import { CSSTransition } from 'react-transition-group';
 import {connect} from 'react-redux';
 import {actionCreators} from './store'
 
+const getListArea = (show)=> {
+	if(show){
+		return(
+		<div className ="SearchInfo">
+			<div className = 'SearchInfoTitle'>
+				热门搜索
+				<span className = 'SearchInfoSwitch'>换一批</span>
+			</div>
+			<div className = 'SearchInfoItem'>
+				<a>教育</a>
+				<a>教育</a>
+				<a>教育</a>
+				<a>教育</a>
+				<a>教育</a>
+				<a>教育</a>
+				<a>教育</a>
+				<a>教育</a>
+			</div>
+		</div>)
+    
+	}else{
+     return ('')
+	}
+}
+
+
 const Header = (props) => {
    
   return (
@@ -24,6 +50,7 @@ const Header = (props) => {
                        onBlur = {props.handleInputBlur}
                        className = {props.focused ? 'focused navSearch' : 'navSearch'}  placeholder="搜索"></input>
                 <i className = {props.focused ? 'focused iconfont' : 'iconfont' }>&#xe62a;</i>
+								{getListArea(props.focused)}
             </div>
             </CSSTransition>
         </div>
