@@ -1,7 +1,8 @@
 import * as constants from './constants';
 
 const defaultState = {
-    focused: false
+    focused: false,
+    list: []
 };
 
 
@@ -16,6 +17,12 @@ export default (state = defaultState, action) => {
     if(action.type === constants.SEARCH_BLUR){
         return{
             focused:false
+        }
+    }
+    if(action.type === constants.CHANGE_LIST){
+        return{
+            list: action.data,
+            focused : true
         }
     }
   return state
