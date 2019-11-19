@@ -6,10 +6,11 @@ import {connect} from 'react-redux';
 import {actionCreators} from './store'
 
 class Header extends Component{
-
+    
 	getListArea(){
-		const list = this.props.list || [];
-		if(this.props.focused){
+		const {focused, list} = this.props;
+		const copyList = list || [];
+		if(focused){
 			return(
 			<div className ="SearchInfo">
 				<div className = 'SearchInfoTitle'>
@@ -18,7 +19,7 @@ class Header extends Component{
 				</div>
 				<div className = 'SearchInfoItem'>
 					{
-					 list.map((item,index) => {
+					 copyList.map((item,index) => {
 							return <a key = {index}>{item}</a>
 						})
 					}
@@ -30,6 +31,7 @@ class Header extends Component{
 		}
 	}
 	render() {
+		const {focused,handleInputFocuse,handleInputBlur} = this.props;
 		return (
 			<div className='headerWrapper'>
 					<a className='logo' href='/'></a>
@@ -40,13 +42,13 @@ class Header extends Component{
 							<div className='navItem right'><i className='iconfont'>&#xe636;</i></div>
 							<CSSTransition
 									timeout={100}
-									in={this.props.focused}
+									in={focused}
 									classNames="slide">
 							<div className='searchWrapper'>
-									<input onFocus = {this.props.handleInputFocuse} 
-												 onBlur = {this.props.handleInputBlur}
-												 className = {this.props.focused ? 'focused navSearch' : 'navSearch'}  placeholder="搜索"></input>
-									<i className = {this.props.focused ? 'focused iconfont' : 'iconfont' }>&#xe62a;</i>
+									<input onFocus = {handleInputFocuse} 
+												 onBlur = {handleInputBlur}
+												 className = {focused ? 'focused navSearch' : 'navSearch'}  placeholder="搜索"></input>
+									<i className = {focused ? 'focused iconfont' : 'iconfont' }>&#xe62a;</i>
 									{this.getListArea()}
 							</div>
 							</CSSTransition>
