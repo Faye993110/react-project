@@ -4,7 +4,9 @@ import axios from 'axios';
 const changeList = (data) => {
   return {
     type: constants.CHANGE_LIST,
-    data
+    data: data,
+    totalPage: Math.ceil(data.length /10),
+    page: 0
   }
 }
 
@@ -16,7 +18,12 @@ export const searchBlur = () => ({
 	type: constants.SEARCH_BLUR
 })
 
-
+export const mouseEnter = () => ({
+  type: constants.MOUSE_ENTER
+})
+export const mouseLeave = () => ({
+  type: constants.MOUSE_LEAVE
+})
 export const getList = () => {
   return (dispatch) => {
     axios.get('/api/headerList.json').then((res) => {
@@ -25,7 +32,6 @@ export const getList = () => {
     console.log(data);
     }).catch(() => {
       console.log('error');
-    })
-    
+    })   
   }
 }

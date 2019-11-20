@@ -2,7 +2,10 @@ import * as constants from './constants';
 
 const defaultState = {
     focused: false,
-    list: []
+		list: [],
+		page: 0,
+		totalPage: 1,
+		mouseIn : true
 };
 
 
@@ -17,7 +20,18 @@ export default (state = defaultState, action) => {
 		case constants.CHANGE_LIST:
 			return {
 					list: action.data,
-					focused: true
+					focused: true,
+					totalPage : action.totalPage,
+					page : action.page,
+					mouseIn: true
+			}
+		case constants.MOUSE_ENTER:
+			return {
+				mouseIn: true
+			}
+		case constants.MOUSE_LEAVE:
+			return {
+				mouseIn: false
 			}
 		default:
 			return state

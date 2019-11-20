@@ -8,21 +8,23 @@ import {actionCreators} from './store'
 class Header extends Component{
     
 	getListArea(){
-		const {focused, list} = this.props;
+		const {focused, list, page, mouseIn} = this.props;
 		const copyList = list || [];
-		if(focused){
+		const pageList = [];
+		for(let i = page * 10; i < (page+1) * 10; i++){
+			pageList.push(<a key = {copyList[i]}>{copyList[i]}</a>);
+		}
+		if(focused && mouseIn){
 			return(
-			<div className ="SearchInfo">
+			<div className ="SearchInfo" 
+						onMouseEnter = {this.props.onMouseEnter}
+						onMouseLeave = {this.props.onMouseLeave}>
 				<div className = 'SearchInfoTitle'>
 					热门搜索
 					<span className = 'SearchInfoSwitch'>换一批</span>
 				</div>
 				<div className = 'SearchInfoItem'>
-					{
-					 copyList.map((item,index) => {
-							return <a key = {index}>{item}</a>
-						})
-					}
+					{pageList}
 				</div>
 			</div>)
 			
@@ -69,7 +71,9 @@ class Header extends Component{
 const mapStateToProps = (state) => {
   return{
 		focused: state.header.focused,
-		list: state.header.list
+		list: state.header.list,
+		page: state.header.page,
+		mouseIn: state.header.mouseIn
   }
 }
 
@@ -82,7 +86,13 @@ const mapDispatchToProps = (dispatch) => {
         handleInputFocuse(){
 					dispatch(actionCreators.getList()); 
           dispatch(actionCreators.searchFocus());
-        }
+				},
+				onMouseEnter(){
+					dispatch(actionCreators.mouseEnter())
+				},
+				onMouseLeave(){
+					dispatch(actionCreators.mouseLeave())
+				}
     }
 }
 
