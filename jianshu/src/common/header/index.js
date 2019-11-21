@@ -8,20 +8,22 @@ import {actionCreators} from './store'
 class Header extends Component{
     
 	getListArea(){
-		const {focused, list, page, mouseIn} = this.props;
+		const {focused, list, page, mouseIn, totalPage, handleChangePage} = this.props;
 		const copyList = list || [];
 		const pageList = [];
-		for(let i = page * 10; i < (page+1) * 10; i++){
-			pageList.push(<a key = {copyList[i]}>{copyList[i]}</a>);
+		for(let i = (page-1) * 10; i < page * 10; i++){
+			if(copyList[i]){
+        pageList.push(<a key = {copyList[i]}>{copyList[i]}</a>);
+			}
 		}
-		if(focused && mouseIn){
+		if(focused || mouseIn){
 			return(
 			<div className ="SearchInfo" 
 						onMouseEnter = {this.props.onMouseEnter}
 						onMouseLeave = {this.props.onMouseLeave}>
 				<div className = 'SearchInfoTitle'>
 					热门搜索
-					<span className = 'SearchInfoSwitch'>换一批</span>
+					<span className = 'SearchInfoSwitch' onClick = {()=>{handleChangePage(page, totalPage)}}>换一批</span>
 				</div>
 				<div className = 'SearchInfoItem'>
 					{pageList}
@@ -73,7 +75,8 @@ const mapStateToProps = (state) => {
 		focused: state.header.focused,
 		list: state.header.list,
 		page: state.header.page,
-		mouseIn: state.header.mouseIn
+		mouseIn: state.header.mouseIn,
+		totalPage : state.header.totalPage
   }
 }
 
@@ -81,17 +84,26 @@ const mapDispatchToProps = (dispatch) => {
     return{
         handleInputBlur(){
 						dispatch(actionCreators.searchBlur());
-						//dispatch(actionCreators.getList()); 
         },
         handleInputFocuse(){
+					dispatch(actionCreators.searchFocus());
 					dispatch(actionCreators.getList()); 
-          dispatch(actionCreators.searchFocus());
+         
 				},
 				onMouseEnter(){
+					
 					dispatch(actionCreators.mouseEnter())
 				},
 				onMouseLeave(){
 					dispatch(actionCreators.mouseLeave())
+				},
+				handleChangePage(page, totalPage){
+				//	console.log(page,totalPage);
+				if(page < totalPage){
+					dispatch(actionCreators.changePage(page+1))
+				}else{
+					dispatch(actionCreators.changePage(1))
+				}
 				}
     }
 }

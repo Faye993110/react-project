@@ -6,7 +6,6 @@ const changeList = (data) => {
     type: constants.CHANGE_LIST,
     data: data,
     totalPage: Math.ceil(data.length /10),
-    page: 0
   }
 }
 
@@ -29,9 +28,14 @@ export const getList = () => {
     axios.get('/api/headerList.json').then((res) => {
     const data = res.data;
     dispatch(changeList(data.data));
-    console.log(data);
+   // console.log(data);
     }).catch(() => {
       console.log('error');
     })   
   }
 }
+
+export const changePage = (page)=>({
+  type:constants.CHANGE_PAGE,
+  page: page
+})

@@ -3,9 +3,9 @@ import * as constants from './constants';
 const defaultState = {
     focused: false,
 		list: [],
-		page: 0,
+		page: 1,
 		totalPage: 1,
-		mouseIn : true
+		mouseIn : false
 };
 
 
@@ -14,24 +14,33 @@ const defaultState = {
 export default (state = defaultState, action) => {
 	switch(action.type){
 		case constants.SEARCH_FOCUS:
-			return {focused:true};
+			return {
+				...state,
+				focused:true};
 		case constants.SEARCH_BLUR:
-			return {focused: false};
+			return {...state,
+				focused: false};
 		case constants.CHANGE_LIST:
 			return {
+				  ...state,
 					list: action.data,
-					focused: true,
-					totalPage : action.totalPage,
-					page : action.page,
-					mouseIn: true
+					totalPage: action.totalPage
 			}
 		case constants.MOUSE_ENTER:
 			return {
+				...state,
 				mouseIn: true
+			
 			}
 		case constants.MOUSE_LEAVE:
 			return {
+				...state,
 				mouseIn: false
+			}
+		case constants.CHANGE_PAGE:
+			return{
+				...state,
+        page: action.page
 			}
 		default:
 			return state
