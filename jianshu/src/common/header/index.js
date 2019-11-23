@@ -36,7 +36,8 @@ class Header extends Component{
 		}
 	}
 	render() {
-		const {focused,handleInputFocuse,handleInputBlur} = this.props;
+		const {focused, handleInputFocuse,handleInputBlur,list} = this.props;
+		
 		return (
 			<div className='headerWrapper'>
 					<a className='logo' href='/'></a>
@@ -50,7 +51,7 @@ class Header extends Component{
 									in={focused}
 									classNames="slide">
 							<div className='searchWrapper'>
-									<input onFocus = {handleInputFocuse} 
+									<input onFocus = {() => handleInputFocuse(list)} 
 												 onBlur = {handleInputBlur}
 												 className = {focused ? 'focused navSearch' : 'navSearch'}  placeholder="搜索"></input>
 									<i className = {focused ? 'focused iconfont zoom' : 'iconfont zoom' }>&#xe62a;</i>
@@ -86,9 +87,9 @@ const mapDispatchToProps = (dispatch) => {
         handleInputBlur(){
 						dispatch(actionCreators.searchBlur());
         },
-        handleInputFocuse(){
+        handleInputFocuse(list){
+					(list.length === 0) && dispatch(actionCreators.getList()); 
 					dispatch(actionCreators.searchFocus());
-					dispatch(actionCreators.getList()); 
          
 				},
 				onMouseEnter(){
@@ -98,8 +99,16 @@ const mapDispatchToProps = (dispatch) => {
 				onMouseLeave(){
 					dispatch(actionCreators.mouseLeave())
 				},
-				handleChangePage(page, totalPage){
-				//	console.log(page,totalPage);
+				handleChangePage(page, totalPage, spin){
+					let orginAngle = spin.style.transform.replace(/[^0-9]/ig,'')
+					if(orginAngle){
+						orginAngle = parseInt(orginAngle, 10);
+					}else{
+						orginAngle = 0;
+					}
+          orginAngle = orginAngle + 360;
+					spin.style.transform = `rotate(${orginAngle}deg)`
+				//	console.log(spin.style.transform);
 				if(page < totalPage){
 					dispatch(actionCreators.changePage(page+1))
 				}else{
