@@ -23,7 +23,8 @@ class Header extends Component{
 						onMouseLeave = {this.props.onMouseLeave}>
 				<div className = 'SearchInfoTitle'>
 					热门搜索
-					<span className = 'SearchInfoSwitch' onClick = {()=>{handleChangePage(page, totalPage)}}>换一批</span>
+					<span className = 'SearchInfoSwitch' onClick = {()=>{handleChangePage(page, totalPage,this.spinIcon)}}>
+					<i ref = {(icon) => {this.spinIcon = icon}} className='iconfont spin'>&#xe851;</i>换一批</span>
 				</div>
 				<div className = 'SearchInfoItem'>
 					{pageList}
@@ -52,7 +53,7 @@ class Header extends Component{
 									<input onFocus = {handleInputFocuse} 
 												 onBlur = {handleInputBlur}
 												 className = {focused ? 'focused navSearch' : 'navSearch'}  placeholder="搜索"></input>
-									<i className = {focused ? 'focused iconfont' : 'iconfont' }>&#xe62a;</i>
+									<i className = {focused ? 'focused iconfont zoom' : 'iconfont zoom' }>&#xe62a;</i>
 									{this.getListArea()}
 							</div>
 							</CSSTransition>
