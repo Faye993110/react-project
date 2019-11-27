@@ -8,7 +8,7 @@ class Topic extends  Component {
                 {(this.props.topList|| []).map((item) => {
                     return(
                       <div className = 'topicItem' key = {item.id}>
-                        <img className = 'topic-pic' src = {item.imgUrl}></img>
+                        <img alt = '' className = 'topic-pic' src = {item.imgUrl}></img>
                         {item.title}
                       </div>
                     )

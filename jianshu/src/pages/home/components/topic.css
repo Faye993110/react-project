@@ -2,6 +2,7 @@
     padding: 20px 0 10px 0;
     overflow: hidden;
     margin-left: -18px;
+    border-bottom: 1px solid #dcdcdc;
 }
 
 .topicItem{
@@ -25,3 +26,36 @@
     display: block;
     float: left;
 }
+
+.listItem{
+    padding: 20px 0;
+    border-bottom: 1px solid #dcdcdc;
+    overflow: hidden;
+}
+
+.listItem img{
+    width: 125px;
+    height: 100px;
+    display: block;
+    float: right;
+    border-radius: 3px;
+}
+
+.listInfo{
+    width: 500px;
+    float: left;
+}
+
+.listInfo h3{
+    font-size:18px;
+    line-height:27px;
+    font-weight: bold;
+    color:#333
+}
+
+.listInfo p{
+    font-size:13px;
+    line-height: 24px;
+    color:#999;
+}
+

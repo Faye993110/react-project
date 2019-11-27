@@ -13,7 +13,7 @@ class Header extends Component{
 		const pageList = [];
 		for(let i = (page-1) * 10; i < page * 10; i++){
 			if(copyList[i]){
-        pageList.push(<a key = {copyList[i]}>{copyList[i]}</a>);
+        pageList.push(<a href = 'javascript:void(0)' key = {copyList[i]}>{copyList[i]}</a>);
 			}
 		}
 		if(focused || mouseIn){
