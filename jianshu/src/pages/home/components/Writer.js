@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-
+import './topic.css'
 class Writer extends  Component {
     render(){
         return(
-            <div>
+            <div className = 'writerWrapper'>
                 Writer
             </div>
         )
