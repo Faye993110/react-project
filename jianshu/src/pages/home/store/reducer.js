@@ -11,7 +11,13 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
 	switch(action.type){
-		
+	  case 'change_home_data':
+			return{
+				...state,
+				topicList: action.topicList,
+				articleList: action.articleList,
+				recommendList: action.recommendList
+			}	
 		default:
 			return state
 	}
