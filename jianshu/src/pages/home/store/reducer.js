@@ -18,6 +18,14 @@ export default (state = defaultState, action) => {
 				articleList: action.articleList,
 				recommendList: action.recommendList
 			}	
+		case constants.ADD_ARTICLE_LIST:{
+			let list = state.articleList;
+			
+			return{
+				...state,
+				articleList: list.concat(action.result)
+			}
+		}
 		default:
 			return state
 	}

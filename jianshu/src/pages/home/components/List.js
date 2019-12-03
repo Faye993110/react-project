@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './topic.css';
 import {connect} from 'react-redux';
+import {actionCreators} from '../store';
 
 class List extends  Component {
 	
@@ -20,7 +21,7 @@ class List extends  Component {
 								)
 							})
 						}
-            
+            <div className = 'loadMore' onClick = {this.props.getMoreList}>loadMore</div>
 					</div>
       )
     }
@@ -29,4 +30,9 @@ class List extends  Component {
 const mapStateToProps = (state)=>({
 	 articleList : state.home.articleList
 })
-export default connect(mapStateToProps,null)(List);
+const mapDispatchToProps = (dispatch) => ({
+   getMoreList(){
+     dispatch(actionCreators.getMoreList())
+	 }
+})
+export default connect(mapStateToProps,mapDispatchToProps)(List);

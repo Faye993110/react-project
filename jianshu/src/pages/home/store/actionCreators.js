@@ -15,3 +15,16 @@ export const getHomeInfo = ()=>{
           })
     }
 }
+const addHomeList = (result) => ({
+    type : constants.ADD_ARTICLE_LIST,
+    articleList: result
+})
+
+export const getMoreList = ()=> {
+    return (dispatch) => {
+        axios.get('/api/homeList.json').then((res)=>{
+            const result = res.data.data;
+            dispatch(addHomeList(result));
+          })
+    }
+}

@@ -23,6 +23,7 @@ class Home extends  Component {
 						<Recommend></Recommend>
 						<Writer></Writer>
 					</div>
+
 				</div>
 			)
     };
