@@ -9,9 +9,9 @@ class List extends  Component {
       return(
 					<div>
 						{
-							(this.props.articleList||[]).map((item) => {
+							(this.props.articleList||[]).map((item,index) => {
 								return(
-                  <div key = {item.id} className = 'listItem'>
+                  <div key = {index} className = 'listItem'>
 										<img src={item.imgUrl} alt = ''></img>
 										<div className = 'listInfo'>
 												<h3>{item.title}</h3>
@@ -21,18 +21,19 @@ class List extends  Component {
 								)
 							})
 						}
-            <div className = 'loadMore' onClick = {this.props.getMoreList}>loadMore</div>
+            <div className = 'loadMore' onClick = {()=>this.props.getMoreList(this.props.page)}>loadMore</div>
 					</div>
       )
     }
 }
 
 const mapStateToProps = (state)=>({
-	 articleList : state.home.articleList
+	 articleList : state.home.articleList,
+	 page: state.home.articlePage
 })
 const mapDispatchToProps = (dispatch) => ({
-   getMoreList(){
-     dispatch(actionCreators.getMoreList())
+   getMoreList(page){
+     dispatch(actionCreators.getMoreList(page))
 	 }
 })
 export default connect(mapStateToProps,mapDispatchToProps)(List);

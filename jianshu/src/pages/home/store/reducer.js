@@ -3,7 +3,8 @@ import * as constants from './constants';
 const defaultState = {
 	topicList: [],
 		articleList: [],
-		recommendList:[]
+		recommendList:[],
+		articlePage: 1
 };
 
 
@@ -23,7 +24,8 @@ export default (state = defaultState, action) => {
 			
 			return{
 				...state,
-				articleList: list.concat(action.result)
+				articleList: list.concat(action.articleList),
+				articlePage: action.nextPage
 			}
 		}
 		default:
