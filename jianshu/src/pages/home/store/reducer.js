@@ -2,9 +2,10 @@ import * as constants from './constants';
 
 const defaultState = {
 	topicList: [],
-		articleList: [],
-		recommendList:[],
-		articlePage: 1
+	articleList: [],
+	recommendList:[],
+	articlePage: 1,
+	showScroll: false
 };
 
 
@@ -21,11 +22,16 @@ export default (state = defaultState, action) => {
 			}	
 		case constants.ADD_ARTICLE_LIST:{
 			let list = state.articleList;
-			
 			return{
 				...state,
 				articleList: list.concat(action.articleList),
 				articlePage: action.nextPage
+			}
+		}
+		case constants.TOGGLE_TOP_SHOW: {
+			return {
+				...state,
+				showScroll : action.show
 			}
 		}
 		default:

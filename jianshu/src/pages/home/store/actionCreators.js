@@ -29,3 +29,8 @@ export const getMoreList = (page)=> {
           })
     }
 }
+
+export const toggleTopShow = (show)=>({
+  type: constants.TOGGLE_TOP_SHOW,
+  show: show
+})
