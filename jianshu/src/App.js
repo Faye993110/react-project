@@ -9,17 +9,15 @@ import Detail from './pages/detail'
 
 function App() {
   return (
-    <Provider store={store}>
-      <div>
-      <Header></Header>
+    <Provider store={store}> 
       <BrowserRouter>
+      <Header></Header>
         <div>
         <Route path = '/' exact component = {Home}></Route>
         <Route path = '/detail' exact component = {Detail}></Route>
         </div>
       </BrowserRouter>
       <Globalstyle/>
-      </div>
     </Provider>
   );
 }

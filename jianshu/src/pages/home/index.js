@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import './style.css'
 import Topic from './components/Topic';
 import List from './components/List';
@@ -7,8 +7,11 @@ import Recommend from './components/Recommend';
 import {actionCreators} from './store';     
 import {connect} from 'react-redux'
 
-class Home extends  Component {
+class Home extends PureComponent {
 
+	// shouldComponentUpdate(){
+
+	// }
 	handleScrollTop() {
 		window.scrollTo(0, 0);
 	}
@@ -23,8 +26,6 @@ class Home extends  Component {
 	componentWillUnmount(){
 		window.removeEventListener('scroll',this.props.changeScrollTopShow())
 	}
-
-  
     render(){
 			return(
 				<div className = 'homeWrapper'>
@@ -41,9 +42,7 @@ class Home extends  Component {
          
 				</div>
 			)
-    };
-
-   
+    };  
 }
 
 const mapStateToProps = (state) =>({

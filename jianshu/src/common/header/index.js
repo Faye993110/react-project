@@ -3,7 +3,8 @@ import './header.css';
 import '../../statics/confont/iconfont.css';
 import { CSSTransition } from 'react-transition-group';
 import {connect} from 'react-redux';
-import {actionCreators} from './store'
+import {actionCreators} from './store';
+import {Link} from 'react-router-dom'
 
 class Header extends Component{
     
@@ -40,7 +41,7 @@ class Header extends Component{
 		
 		return (
 			<div className='headerWrapper'>
-					<a className='logo' href='/'></a>
+				  <Link to = '/'><div className='logo'></div></Link>
 					<div className='nav'>
 							<div className='navItem left active'>首页</div>
 							<div className='navItem left'>下载APP</div>
