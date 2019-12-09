@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import './style.css';
 import {connect} from 'react-redux';
+import {actionCreators} from './store';
+
 class Detail extends  Component {
+    componentDidMount(){
+        this.props.getDetail();
+    }
     render(){
         return(
             <div className = 'detailWrapper'>
@@ -19,4 +24,10 @@ title : state.detail.title,
 content : state.detail.content
 })
 
-export default connect(mapStateToProps, null)(Detail);
+const mapDispatch = (dispatch) => ({
+    getDetail() {
+     dispatch(actionCreators.getDetail());
+     }
+})
+
+export default connect(mapStateToProps, mapDispatch)(Detail);
