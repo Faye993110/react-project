@@ -11,7 +11,7 @@ class List extends PureComponent {
 						{
 							(this.props.articleList||[]).map((item,index) => {
 								return(
-									<Link key = {index} to='./detail'>
+									<Link key = {index} to = {'/detail/' + item.id} >
                   <div key = {index} className = 'listItem'>
 										<img src={item.imgUrl} alt = ''></img>
 										<div className = 'listInfo'>
