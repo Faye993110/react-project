@@ -13,6 +13,7 @@ class Login extends  PureComponent {
                <div className = 'loginBox'>
                    <input className = 'input' placeholder = 'ID'></input>
                    <input className = 'input' placeholder = 'Password'></input>
+                   <button className = 'loginbutton'>登陆</button>
                </div>
             </div>
         )

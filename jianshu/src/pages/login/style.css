@@ -10,7 +10,7 @@
 
 .loginBox{
     width: 400px;
-    height: 220px;
+    height: 180px;
     margin: 80px auto;
     background: #fff;
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -27,6 +27,14 @@
   margin: 10px auto;
 }
 
-.button{
-    
+.loginbutton{
+ display: block;
+  width: 220px;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  background: #3194d0;
+  border-radius: 15px;
+  margin: 10px auto;
+  text-align: center;
 }
