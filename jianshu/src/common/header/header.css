@@ -2,6 +2,7 @@
 	height: 58px;
 	border-bottom: 1px solid #f0f0f0;
 	position: relative;
+	z-index: 1;
 }
 
 .logo{
@@ -154,7 +155,7 @@ input::placeholder {
 	/* transform: rotate(0deg); */
 	transform-origin: center center;
 }
-.SearchInfoItem a{
+.SearchInfoItem span{
 	font-size:12px;
 	padding:0 5px;
 	border:1px solid #ddd;
