@@ -37,7 +37,7 @@ class Header extends Component{
 		}
 	}
 	render() {
-		const {focused, handleInputFocuse,handleInputBlur,list} = this.props;
+		const {focused, handleInputFocuse,handleInputBlur,list,login} = this.props;
 		
 		return (
 			<div className='headerWrapper'>
@@ -45,7 +45,8 @@ class Header extends Component{
 					<div className='nav'>
 							<div className='navItem left active'>首页</div>
 							<div className='navItem left'>下载APP</div>
-							<div className='navItem right'>登陆</div>
+							{login ? (<div className='navItem right'>退出</div>): (<div className='navItem right'>登陆</div>)}
+							
 							<div className='navItem right'><i className='iconfont'>&#xe636;</i></div>
 							<CSSTransition
 									timeout={100}
@@ -79,7 +80,8 @@ const mapStateToProps = (state) => {
 		list: state.header.list,
 		page: state.header.page,
 		mouseIn: state.header.mouseIn,
-		totalPage : state.header.totalPage
+		totalPage : state.header.totalPage,
+		login : state.login.login
   }
 }
 
