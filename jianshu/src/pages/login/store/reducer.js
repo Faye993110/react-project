@@ -9,6 +9,16 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
 	switch(action.type){
+        case constants.CHANGE_LOGIN:
+            return{
+                ...state,
+                login : action.value
+            }
+        case constants.LOGOUT:
+            return{
+                ...state,
+                login: action.value
+            }
 		default:
 			return state
 	}

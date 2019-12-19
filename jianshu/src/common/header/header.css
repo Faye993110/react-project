@@ -37,6 +37,7 @@
 .navItem.right{
 	float: right;
 	color: #969696;
+	cursor: pointer;
 }
 
 .navItem.active{

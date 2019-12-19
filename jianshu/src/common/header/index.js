@@ -4,7 +4,8 @@ import '../../statics/confont/iconfont.css';
 import { CSSTransition } from 'react-transition-group';
 import {connect} from 'react-redux';
 import {actionCreators} from './store';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {actionCreators as loginActionCreators} from '../../pages/login/store'
 
 class Header extends Component{
     
@@ -37,7 +38,7 @@ class Header extends Component{
 		}
 	}
 	render() {
-		const {focused, handleInputFocuse,handleInputBlur,list,login} = this.props;
+		const {focused, handleInputFocuse,handleInputBlur,list,login,logout} = this.props;
 		
 		return (
 			<div className='headerWrapper'>
@@ -45,8 +46,9 @@ class Header extends Component{
 					<div className='nav'>
 							<div className='navItem left active'>首页</div>
 							<div className='navItem left'>下载APP</div>
-							{login ? (<div className='navItem right'>退出</div>): (<div className='navItem right'>登陆</div>)}
-							
+							{login ? (<div onClick = {logout} className='navItem right'>退出</div> 
+							):(
+							<Link to = '/login'><div className='navItem right'>登陆</div></Link>)}
 							<div className='navItem right'><i className='iconfont'>&#xe636;</i></div>
 							<CSSTransition
 									timeout={100}
@@ -88,36 +90,38 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
         handleInputBlur(){
-						dispatch(actionCreators.searchBlur());
+			dispatch(actionCreators.searchBlur());
         },
         handleInputFocuse(list){
-					(list.length === 0) && dispatch(actionCreators.getList()); 
-					dispatch(actionCreators.searchFocus());
+			(list.length === 0) && dispatch(actionCreators.getList()); 
+			dispatch(actionCreators.searchFocus());
          
-				},
-				onMouseEnter(){
-					
-					dispatch(actionCreators.mouseEnter())
-				},
-				onMouseLeave(){
-					dispatch(actionCreators.mouseLeave())
-				},
-				handleChangePage(page, totalPage, spin){
-					let orginAngle = spin.style.transform.replace(/[^0-9]/ig,'')
-					if(orginAngle){
-						orginAngle = parseInt(orginAngle, 10);
-					}else{
-						orginAngle = 0;
-					}
-          orginAngle = orginAngle + 360;
-					spin.style.transform = `rotate(${orginAngle}deg)`
-				//	console.log(spin.style.transform);
-				if(page < totalPage){
-					dispatch(actionCreators.changePage(page+1))
-				}else{
-					dispatch(actionCreators.changePage(1))
-				}
-				}
+		},
+		onMouseEnter(){
+			dispatch(actionCreators.mouseEnter())
+		},
+		onMouseLeave(){
+			dispatch(actionCreators.mouseLeave())
+		},
+		handleChangePage(page, totalPage, spin){
+			let orginAngle = spin.style.transform.replace(/[^0-9]/ig,'')
+			if(orginAngle){
+				orginAngle = parseInt(orginAngle, 10);
+			}else{
+				orginAngle = 0;
+			}
+	orginAngle = orginAngle + 360;
+			spin.style.transform = `rotate(${orginAngle}deg)`
+		//	console.log(spin.style.transform);
+		if(page < totalPage){
+			dispatch(actionCreators.changePage(page+1))
+		}else{
+			dispatch(actionCreators.changePage(1))
+		}
+		},
+		logout() {
+			dispatch(loginActionCreators.logout())
+		}
     }
 }
 
