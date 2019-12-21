@@ -64,7 +64,9 @@ class Header extends Component{
 							</CSSTransition>
 					</div>
 					<div className='addition'>
+						    <Link to ='/write'>
 							<div className = "button writting"><i className='iconfont'>&#xe617;</i>写文章</div>
+							</Link>
 							<div className = "button reg">注册</div>
 					</div>
 			</div>
