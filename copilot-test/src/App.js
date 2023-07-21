@@ -4,8 +4,6 @@ import HooksForm from './component/HooksForm'
 
 import { useEffect, useState } from 'react'
 
-const initApi =
-  'https://www.fastmock.site/mock/1e30667a4c6ab50c7eb19db9bd72c3c5/hooks/api/index'
 function App() {
   const [initData, setInitData] = useState([])
   useEffect(() => {
