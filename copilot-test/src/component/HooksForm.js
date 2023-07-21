@@ -63,7 +63,7 @@ function HooksForm({ initData }) {
 
   return (
     <div>
-      <h1>hooks form</h1>
+      <h1>Pay Some on new</h1>
       <Form
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
